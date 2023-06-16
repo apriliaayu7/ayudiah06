@@ -1,0 +1,49 @@
+<?php
+include_once 'connect.php';
+$result = mysqli_query($host,"SELECT * FROM pengguna");
+?>
+<!DOCTYPE html>
+<html>
+ <head>
+   <title> Update/Edit</title>
+ </head>
+<body>
+<?php
+if (mysqli_num_rows($result) > 0) {
+?>
+<table>
+	  <tr>
+	    <td>id</td>
+		<td>nama</td>
+		<td>alamat</td>
+		<td>no_telepon</td>
+		<td>umur</td>
+		<td>keluhan</td>
+	  </tr>
+			<?php
+			$i=0;   
+			while($row = mysqli_fetch_array($result)) {
+			?>
+	  <tr>
+	    <td><?php echo $row["id_pengguna"]; ?></td>
+		<td><?php echo $row["nama"]; ?></td>
+		<td><?php echo $row["alamat"]; ?></td>
+		<td><?php echo $row["no_telepon"]; ?></td>
+		<td><?php echo $row["umur"]; ?></td>
+		<td><?php echo $row["keluhan"]; ?></td>
+		<td><a href="UpdateProcess2.php?id_pasien=<?php echo $row["id_pengguna"]; ?>">Update</a></td>
+      </tr>
+			<?php
+			$i++;
+			}
+			?>
+</table>
+ <?php
+}
+else
+{
+    echo "No result found";
+}
+?>
+ </body>
+</html>
