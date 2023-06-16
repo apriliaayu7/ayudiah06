@@ -1,0 +1,10 @@
+<?php
+include_once 'connect.php';
+$sql = "DELETE FROM login WHERE id_login='" . $_GET["id_login"] . "'";
+if (mysqli_query($host, $sql)) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error deleting record: " . mysqli_error($host);
+}
+mysqli_close($host);
+?>
