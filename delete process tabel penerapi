@@ -1,0 +1,11 @@
+<?php
+include_once 'connect.php';
+$sql = "DELETE FROM penerapi WHERE id_penerapi='" . $_GET["id_penerapi"] . "'";
+if (mysqli_query($host, $sql)) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error deleting record: " . mysqli_error($host);
+}
+mysqli_close($host);
+?>
+
