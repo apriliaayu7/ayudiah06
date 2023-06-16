@@ -1,0 +1,45 @@
+<?php
+include_once 'connect.php';
+$result = mysqli_query($host,"SELECT * FROM penerapi");
+?>
+<!DOCTYPE html>
+<html>
+ <head>
+   <title> Update/Edit</title>
+ </head>
+<body>
+<?php
+if (mysqli_num_rows($result) > 0) {
+?>
+<table>
+	  <tr>
+	    <td>id</td>
+		<td>penerapi</td>
+		<td>no_telepon</td>
+	  </tr>
+			<?php
+			$i=0;   
+			while($row = mysqli_fetch_array($result)) {
+			?>
+	  <tr>
+	    <td><?php echo $row["id_penerapi"]; ?></td>
+		<td><?php echo $row["nama_penerapi"]; ?></td>
+		<td><?php echo $row["no_telepon"]; ?></td>
+		<td><a href="UpdateProcess.php?id_penerapi=<?php echo $row["id_penerapi"]; ?>">Update</a></td>
+      </tr>
+			<?php
+			$i++;
+			}
+			?>
+</table>
+ <?php
+}
+else
+{
+    echo "No result found";
+}
+?>
+ </body>
+</html>
+
+
