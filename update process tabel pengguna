@@ -1,0 +1,44 @@
+<?php
+include_once 'connect.php';
+if(count($_POST)>0) {
+mysqli_query($host,"UPDATE pengguna set id_pengguna='" . $_POST['id_pengguna'] . "', nama='" . $_POST['nama'] . "', alamat='" . $_POST['alamat'] .  "', no_telepon='" . $_POST['no_telepon'] . "', umur='" . $_POST['umur'] . "', keluhan='" . $_POST['keluhan'] . "' WHERE id_pengguna='" . $_POST['id_pengguna'] . "'");
+$message = "Record Modified Successfully";
+header("location:Update2.php");
+}
+$result = mysqli_query($host,"SELECT * FROM pengguna WHERE id_pengguna='" . $_GET['id_pengguna'] . "'");
+$row= mysqli_fetch_array($result);
+?>
+<html>
+<head>
+<title>Update pengguna Data</title>
+</head>
+<body>
+<form name="frmPnr" method="post" action="">
+<div><?php if(isset($message)) { echo $message; } ?>
+</div>
+<div style="padding-bottom:5px;">
+<a href="view.php">List Pengguna</a>
+</div>
+id: <br>
+<input type="hidden" name="id_pengguna" class="txtField" value="<?php echo $row['id_pengguna']; ?>">
+<input type="text" name="id_pengguna"  value="<?php echo $row['id_pengguna']; ?>">
+<br>
+nama: <br>
+<input type="text" name="nama" class="txtField" value="<?php echo $row['nama']; ?>">
+<br>
+alamat: <br>
+<input type="text" name="alamat" class="txtField" value="<?php echo $row['alamat']; ?>">
+<br>
+no_telepon: <br>
+<input type="text" name="no_telepon" class="txtField" value="<?php echo $row['no_telepon']; ?>">
+<br>
+umur: <br>
+<input type="text" name="umur" class="txtField" value="<?php echo $row['umur']; ?>">
+<br>
+keluhan: <br>
+<input type="text" name="keluhan" class="txtField" value="<?php echo $row['keluhan']; ?>">
+<br>
+<input type="submit" name="submit" value="Submit" class="button">
+</form>
+</body>
+</html>
