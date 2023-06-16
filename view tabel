@@ -1,0 +1,97 @@
+<html>
+    <head>
+    <h1>Menampilkan Tabel penerapi</h1>
+    </head>
+
+    <body>
+        <h3>tabel penerapi</h3>
+        <a href="view table ensikloped.php">ensiklopedia</a><br/>
+        <table border="1" class="table">
+            <tr>
+                <th>ID_penerapi</th>
+                <th>nama_penerapi</th>
+                <th>no_telepon</th>
+            </tr>
+        <?php
+            include "connect.php";
+            $query_mysql = mysqli_query($host,"SELECT * FROM penerapi");
+            while($data = mysqli_fetch_array($query_mysql)){
+        ?>
+            <tr>
+                <td><?php echo $data['id_penerapi']; ?></td>
+                <td><?php echo $data['nama_penerapi']; ?></td>
+                <td><?php echo $data['no_telepon']; ?></td>
+            </tr>
+            <?php } ?>
+
+        <table>
+    <body>
+<html>
+
+<html>
+    <head>
+    <h1>Menampilkan Tabel pengguna</h1>
+    </head>
+
+    <body>
+        <h3>tabel pengguna</h3>
+        <a href="view table ensikloped.php">ensiklopedia</a><br/>
+        <table border="1" class="table">
+            <tr>
+                <th>ID_pengguna</th>
+                <th>nama</th>
+                <th>alamat</th>
+                <th>no_telepon</th>
+                <th>umur</th>
+                <th>keluhan</th>
+            </tr>
+        <?php
+            include "connect.php";
+            $query_mysql = mysqli_query($host,"SELECT * FROM pengguna");
+            while($data = mysqli_fetch_array($query_mysql)){
+        ?>
+            <tr>
+                <td><?php echo $data['id_pengguna']; ?></td>
+                <td><?php echo $data['nama']; ?></td>
+                <td><?php echo $data['alamat']; ?></td>
+                <td><?php echo $data['no_telepon']; ?></td>
+                <td><?php echo $data['umur']; ?></td>
+                <td><?php echo $data['keluhan']; ?></td>
+            </tr>
+            <?php } ?>
+
+        <table>
+    <body>
+<html>
+
+<html>
+    <head>
+    <h1>Menampilkan Tabel login</h1>
+    </head>
+
+    <body>
+        <h3>tabel login</h3>
+        <a href="view table ensikloped.php">ensiklopedia</a><br/>
+        <table border="1" class="table">
+            <tr>
+                <th>id_login</th>
+                <th>id_user</th>
+                <th>email</th>
+                <th>password</th>
+            </tr>
+        <?php
+            include "connect.php";
+            $query_mysql = mysqli_query($host,"SELECT * FROM login");
+            while($data = mysqli_fetch_array($query_mysql)){
+        ?>
+            <tr>
+                <td><?php echo $data['id_login']; ?></td>
+                <td><?php echo $data['id_user']; ?></td>
+                <td><?php echo $data['email']; ?></td>
+                <td><?php echo $data['password']; ?></td>
+            </tr>
+            <?php } ?>
+
+        <table>
+    <body>
+<html>
