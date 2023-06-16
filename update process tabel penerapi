@@ -1,0 +1,35 @@
+<?php
+include_once 'connect.php';
+if(count($_POST)>0) {
+mysqli_query($host,"UPDATE penerapi set id_penerapi='" . $_POST['id_penerapi'] . "', nama_penerapi='" . $_POST['nama_penerapi'] . "', no_telepon='" . $_POST['no_telepon'] .  "' WHERE id_penerapi='" . $_POST['id_penerapi'] . "'");
+$message = "Record Modified Successfully";
+header("location:Update.php");
+}
+$result = mysqli_query($host,"SELECT * FROM penerapi WHERE id_penerapi='" . $_GET['id_penerapi'] . "'");
+$row= mysqli_fetch_array($result);
+?>
+<html>
+<head>
+<title>Update penerapi Data</title>
+</head>
+<body>
+<form name="frmPnr" method="post" action="">
+<div><?php if(isset($message)) { echo $message; } ?>
+</div>
+<div style="padding-bottom:5px;">
+<a href="view.php">List Penerapi</a>
+</div>
+id: <br>
+<input type="hidden" name="id_penerapi" class="txtField" value="<?php echo $row['id_penerapi']; ?>">
+<input type="text" name="id_penerapi"  value="<?php echo $row['id_penerapi']; ?>">
+<br>
+penerapi: <br>
+<input type="text" name="nama_penerapi" class="txtField" value="<?php echo $row['nama_penerapi']; ?>">
+<br>
+no_telepon: <br>
+<input type="text" name="no_telepon" class="txtField" value="<?php echo $row['no_telepon']; ?>">
+<br>
+<input type="submit" name="submit" value="Submit" class="button">
+</form>
+</body>
+</html>
