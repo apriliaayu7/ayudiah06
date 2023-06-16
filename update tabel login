@@ -1,0 +1,45 @@
+<?php
+include_once 'connect.php';
+$result = mysqli_query($host,"SELECT * FROM login");
+?>
+<!DOCTYPE html>
+<html>
+ <head>
+   <title> Update/Edit</title>
+ </head>
+<body>
+<?php
+if (mysqli_num_rows($result) > 0) {
+?>
+<table>
+	  <tr>
+	    <td>id_login</td>
+		<td>id_pasien</td>
+		<td>email</td>
+		<td>password</td>
+	  </tr>
+			<?php
+			$i=0;   
+			while($row = mysqli_fetch_array($result)) {
+			?>
+	  <tr>
+		<td><?php echo $row["id_login"]; ?></td>
+	    <td><?php echo $row["id_pasien"]; ?></td>
+		<td><?php echo $row["email"]; ?></td>
+		<td><?php echo $row["password"]; ?></td>
+		<td><a href="UpdateProcess3.php?id_login=<?php echo $row["id_login"]; ?>">Update</a></td>
+      </tr>
+			<?php
+			$i++;
+			}
+			?>
+</table>
+ <?php
+}
+else
+{
+    echo "No result found";
+}
+?>
+ </body>
+</html>
