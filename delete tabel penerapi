@@ -1,0 +1,37 @@
+<?php
+include_once 'connect.php';
+$result = mysqli_query($host,"SELECT * FROM penerapi");
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hapus Data Penerapi</title>
+</head>
+<body>
+<table>
+	<tr>
+	<td>id</td>
+	<td>penerapi</td>
+	<td>no_telepon</td>
+	</tr>
+	<?php
+	$i=0;
+	while($row = mysqli_fetch_array($result)) {
+	?>
+	<tr class="<?php if(isset($classname)) echo $classname;?>">
+	<td><?php echo $row["id_penerapi"]; ?></td>
+	<td><?php echo $row["nama_penerapi"]; ?></td>
+	<td><?php echo $row["no_telepon"]; ?></td>
+	<td><a href="DeleteProcess.php?id_penerapi=<?php echo $row["id_penerapi"]; ?>">Delete</a></td>
+	</tr>
+	<?php
+	$i++;
+	}
+	?>
+</table>
+</body>
+</html>
+
+
+
